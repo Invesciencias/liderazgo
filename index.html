@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Científicos Influyentes — Del laboratorio al mundo · Invesciencias</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --negro: #0D0D0D;
+  --carbon: #1A1A1A;
+  --grafito: #2E2E2E;
+  --plomo: #4A4A4A;
+  --plata: #9A9A9A;
+  --humo: #E8E8E4;
+  --blanco: #F7F7F5;
+  --oro: #C8A84B;
+  --oro-claro: #E2C97E;
+  --oro-palido: #F5EDD4;
+  --teal: #2A7C6F;
+  --teal-claro: #4AA898;
+  --azul: #2B5F8A;
+  --ambar: #B87333;
+  --violeta: #5C4B8A;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--negro);
+  color: var(--humo);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  background: var(--negro);
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200,168,75,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--oro);
+  border: 1px solid rgba(200,168,75,0.3);
+  padding: 0.4rem 1.2rem;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--blanco);
+  margin-bottom: 0.5rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--oro-claro);
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 300;
+  color: var(--plata);
+  max-width: 600px;
+  margin: 1.5rem auto 2.5rem;
+  line-height: 1.7;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--oro);
+  color: var(--negro);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+  border: none;
+}
+.hero-cta:hover { background: var(--oro-claro); transform: translateY(-2px); }
+
+.portraits {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+.portrait-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  padding: 0.4rem 0.9rem 0.4rem 0.4rem;
+}
+.portrait-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.av-teal { background: rgba(42,124,111,0.3); color: var(--teal-claro); }
+.av-blue { background: rgba(43,95,138,0.3); color: #6EA8D4; }
+.av-amber { background: rgba(184,115,51,0.3); color: #D4965A; }
+.av-violet { background: rgba(92,75,138,0.3); color: #A48FD4; }
+.portrait-name {
+  font-size: 0.78rem;
+  color: var(--plata);
+  font-weight: 400;
+}
+
+/* ── NAV ── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0 1.5rem;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 1rem 1.1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--plata);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn:hover { color: var(--humo); }
+.tab-btn.active { color: var(--oro); border-bottom-color: var(--oro); font-weight: 500; }
+
+/* ── SECCIONES ── */
+.seccion { display: none; }
+.seccion.active { display: block; }
+
+/* ── LAYOUT BASE ── */
+.contenedor {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 5rem;
+}
+.sec-header {
+  margin-bottom: 2.5rem;
+}
+.sec-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: 0.75rem;
+}
+.sec-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 400;
+  color: var(--blanco);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.sec-desc {
+  font-size: 0.95rem;
+  color: var(--plata);
+  max-width: 600px;
+  line-height: 1.75;
+}
+
+/* ── CARDS CIENTÍFICOS ── */
+.sci-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.sci-card {
+  background: var(--carbon);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.sci-card:hover { border-color: rgba(200,168,75,0.3); transform: translateY(-2px); }
+.sci-card.sel { border-color: var(--oro); border-width: 2px; }
+.sci-ico {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.sci-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--blanco);
+  margin-bottom: 0.25rem;
+}
+.sci-era {
+  font-size: 0.73rem;
+  color: var(--plata);
+  margin-bottom: 0.6rem;
+}
+.sci-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  padding: 2px 10px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.06);
+  color: var(--plata);
+  letter-spacing: 0.05em;
+}
+
+/* Panel detalle científico */
+.detalle {
+  background: var(--carbon);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 2rem;
+}
+.detalle h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--blanco);
+  margin-bottom: 0.5rem;
+}
+.detalle-cita {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--oro-claro);
+  border-left: 2px solid var(--oro);
+  padding-left: 1rem;
+  margin: 1rem 0 1.5rem;
+  line-height: 1.7;
+}
+.habilidad {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.75rem;
+}
+.habilidad-titulo {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--oro-claro);
+  margin-bottom: 0.35rem;
+}
+.habilidad p {
+  font-size: 0.88rem;
+  color: var(--plata);
+  line-height: 1.6;
+}
+.btn-practica {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  background: none;
+  border: 1px solid rgba(200,168,75,0.4);
+  border-radius: 6px;
+  padding: 0.6rem 1.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: var(--oro);
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.btn-practica:hover { background: rgba(200,168,75,0.08); }
+
+/* ── TABLA HABILIDADES ── */
+.tabla-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 1.5rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+thead {
+  background: var(--grafito);
+}
+thead th {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--plata);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+thead th:first-child { color: var(--oro); }
+tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.15s;
+}
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+tbody tr:last-child { border-bottom: none; }
+td {
+  padding: 0.85rem 1rem;
+  color: var(--plata);
+  vertical-align: top;
+}
+td:first-child { color: var(--humo); font-weight: 500; font-size: 0.82rem; }
+.bar-wrap { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-top: 4px; }
+.bar { height: 100%; border-radius: 2px; background: var(--teal-claro); }
+
+/* ── EJERCICIOS ── */
+.ejercicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.ejercicio-card {
+  background: var(--carbon);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.ejercicio-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+.ic-t { background: rgba(42,124,111,0.15); }
+.ic-b { background: rgba(43,95,138,0.15); }
+.ic-a { background: rgba(184,115,51,0.15); }
+.ic-c { background: rgba(92,75,138,0.15); }
+.ejercicio-card h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--blanco);
+  margin-bottom: 0.5rem;
+}
+.ejercicio-card p {
+  font-size: 0.85rem;
+  color: var(--plata);
+  line-height: 1.65;
+  flex: 1;
+}
+.ejercicio-quien {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── PROPUESTA ── */
+.propuesta-bloque {
+  background: var(--carbon);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1rem;
+}
+.propuesta-bloque h3 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--blanco);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.propuesta-bloque h3 span {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  background: var(--oro);
+  color: var(--negro);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.propuesta-bloque p {
+  font-size: 0.88rem;
+  color: var(--plata);
+  line-height: 1.7;
+}
+.badges-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0; }
+.badge {
+  font-size: 0.68rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+.badge-teal { background: rgba(42,124,111,0.2); color: var(--teal-claro); }
+.badge-blue { background: rgba(43,95,138,0.2); color: #6EA8D4; }
+.badge-amber { background: rgba(184,115,51,0.2); color: #D4965A; }
+
+.modulo {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.modulo h4 {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--oro-claro);
+  margin-bottom: 0.6rem;
+}
+.paso-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  counter-reset: pasos;
+}
+.paso-lista li {
+  counter-increment: pasos;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.84rem;
+  color: var(--plata);
+}
+.paso-lista li::before {
+  content: counter(pasos);
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--grafito);
+  color: var(--plata);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  margin-top: 2px;
+}
+
+.cta-grande {
+  background: linear-gradient(135deg, rgba(200,168,75,0.1) 0%, rgba(42,124,111,0.1) 100%);
+  border: 1px solid rgba(200,168,75,0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.cta-grande p {
+  font-size: 0.9rem;
+  color: var(--plata);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+.cta-grande .btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--oro);
+  color: var(--negro);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cta-grande .btn-cta:hover { background: var(--oro-claro); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--carbon);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+footer p {
+  font-size: 0.78rem;
+  color: var(--plomo);
+  line-height: 1.8;
+}
+footer a { color: var(--oro); text-decoration: none; }
+footer strong { color: var(--plata); }
+
+@media(max-width:600px){
+  .contenedor{padding:2.5rem 1.25rem 4rem;}
+  .sci-grid{grid-template-columns:1fr 1fr;}
+  .ejercicios-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <span class="hero-badge">Invesciencias · Liderazgo científico</span>
+  <h1>Del laboratorio<br>al <em>mundo</em></h1>
+  <p class="hero-sub">Cómo los grandes científicos trascendieron su especialidad y se convirtieron en agentes de cambio político, cultural y social.</p>
+  <button class="hero-cta" onclick="irA('modelos')">Explorar la plataforma ↓</button>
+
+  <div class="portraits">
+    <div class="portrait-chip">
+      <div class="portrait-avatar av-teal">AE</div>
+      <span class="portrait-name">Einstein</span>
+    </div>
+    <div class="portrait-chip">
+      <div class="portrait-avatar av-blue">CB</div>
+      <span class="portrait-name">C. Bernard</span>
+    </div>
+    <div class="portrait-chip">
+      <div class="portrait-avatar av-amber">MP</div>
+      <span class="portrait-name">Planck</span>
+    </div>
+    <div class="portrait-chip">
+      <div class="portrait-avatar av-violet">AC</div>
+      <span class="portrait-name">Carrel</span>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="sticky-nav" id="nav-principal">
+  <button class="tab-btn" onclick="cambiarTab('modelos')">Modelos históricos</button>
+  <button class="tab-btn" onclick="cambiarTab('habilidades')">Habilidades clave</button>
+  <button class="tab-btn" onclick="cambiarTab('ejercicios')">Ejercicios prácticos</button>
+  <button class="tab-btn" onclick="cambiarTab('propuesta')">Propuesta Invesciencias</button>
+</nav>
+
+<!-- ═══════════════════════════
+     SECCIÓN 1 — MODELOS
+     ═══════════════════════════ -->
+<section class="seccion" id="sec-modelos">
+  <div class="contenedor">
+    <div class="sec-header">
+      <p class="sec-eyebrow">Modelos históricos</p>
+      <h2 class="sec-titulo">Científicos que cambiaron<br>más que su disciplina</h2>
+      <p class="sec-desc">Selecciona un científico para explorar sus estrategias concretas de influencia pública, política e institucional.</p>
+    </div>
+
+    <div class="sci-grid">
+      <div class="sci-card sel" id="card-einstein" onclick="selSci('einstein')">
+        <div class="sci-ico av-teal">AE</div>
+        <h3>Albert Einstein</h3>
+        <div class="sci-era">1879–1955 · Física teórica</div>
+        <span class="sci-tag">Comunicador público</span>
+      </div>
+      <div class="sci-card" id="card-bernard" onclick="selSci('bernard')">
+        <div class="sci-ico av-blue">CB</div>
+        <h3>Claude Bernard</h3>
+        <div class="sci-era">1813–1878 · Fisiología</div>
+        <span class="sci-tag">Escritura científica</span>
+      </div>
+      <div class="sci-card" id="card-planck" onclick="selSci('planck')">
+        <div class="sci-ico av-amber">MP</div>
+        <h3>Max Planck</h3>
+        <div class="sci-era">1858–1947 · Física cuántica</div>
+        <span class="sci-tag">Liderazgo institucional</span>
+      </div>
+      <div class="sci-card" id="card-carrel" onclick="selSci('carrel')">
+        <div class="sci-ico av-violet">AC</div>
+        <h3>Alexis Carrel</h3>
+        <div class="sci-era">1873–1944 · Cirugía / Biología</div>
+        <span class="sci-tag">Divulgación masiva</span>
+      </div>
+    </div>
+
+    <div class="detalle" id="detalle-sci">
+      <h2 id="d-titulo">Albert Einstein — Estrategias de influencia</h2>
+      <div class="detalle-cita" id="d-cita">"Si no puedes explicarlo de forma sencilla, no lo entiendes suficientemente bien."</div>
+      <div id="d-habilidades"></div>
+      <a class="btn-practica" href="#sec-ejercicios" onclick="cambiarTab('ejercicios')">Practicar estas estrategias →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     SECCIÓN 2 — HABILIDADES
+     ═══════════════════════════ -->
+<section class="seccion" id="sec-habilidades">
+  <div class="contenedor">
+    <div class="sec-header">
+      <p class="sec-eyebrow">Habilidades clave</p>
+      <h2 class="sec-titulo">Las 5 competencias de los<br>científicos influyentes</h2>
+      <p class="sec-desc">Mapa comparativo de las habilidades que históricamente han convertido a científicos en agentes de cambio social, político y cultural.</p>
+    </div>
+
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Habilidad</th>
+            <th>Einstein</th>
+            <th>Bernard / Planck</th>
+            <th>Relevancia hoy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Analogía accesible</td>
+            <td>
+              Explicaba la relatividad con trenes y relojes — sin fórmulas
+              <div class="bar-wrap"><div class="bar" style="width:95%"></div></div>
+            </td>
+            <td>
+              Bernard: el médico como detective experimental
+              <div class="bar-wrap"><div class="bar" style="width:80%"></div></div>
+            </td>
+            <td>Esencial para medios, política y financiadores</td>
+          </tr>
+          <tr>
+            <td>Escritura pública</td>
+            <td>
+              Artículos en NYT, cartas a Roosevelt, libros de divulgación
+              <div class="bar-wrap"><div class="bar" style="width:90%"></div></div>
+            </td>
+            <td>
+              Bernard: "Introducción a la medicina experimental" — leído por toda Europa
+              <div class="bar-wrap"><div class="bar" style="width:95%"></div></div>
+            </td>
+            <td>Columnas de opinión, policy papers, blogs</td>
+          </tr>
+          <tr>
+            <td>Red institucional</td>
+            <td>
+              League of Nations, pacifismo activo, redes internacionales
+              <div class="bar-wrap"><div class="bar" style="width:75%"></div></div>
+            </td>
+            <td>
+              Planck: dirigió la Sociedad Kaiser Wilhelm, negoció fondos con el Estado
+              <div class="bar-wrap"><div class="bar" style="width:92%"></div></div>
+            </td>
+            <td>Consejos asesores, ministerios, organismos multilaterales</td>
+          </tr>
+          <tr>
+            <td>Postura ética pública</td>
+            <td>
+              Carta a Roosevelt sobre la bomba, oposición al macartismo
+              <div class="bar-wrap"><div class="bar" style="width:88%"></div></div>
+            </td>
+            <td>
+              Planck: resistió presiones del régimen nazi — autoridad moral internacional
+              <div class="bar-wrap"><div class="bar" style="width:85%"></div></div>
+            </td>
+            <td>Credibilidad en debates urgentes: cambio climático, IA, salud pública</td>
+          </tr>
+          <tr>
+            <td>Narrativa personal</td>
+            <td>
+              El niño que soñaba con la luz — imagen accesible y humana
+              <div class="bar-wrap"><div class="bar" style="width:82%"></div></div>
+            </td>
+            <td>
+              Carrel: Nobel + "La incógnita del hombre" — best-seller mundial
+              <div class="bar-wrap"><div class="bar" style="width:78%"></div></div>
+            </td>
+            <td>Humanizar la ciencia para conectar con audiencias no académicas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="text-align:center;margin-top:1.5rem;">
+      <button class="btn-practica" onclick="cambiarTab('ejercicios')">¿Por dónde empezar? Ver ejercicios →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     SECCIÓN 3 — EJERCICIOS
+     ═══════════════════════════ -->
+<section class="seccion" id="sec-ejercicios">
+  <div class="contenedor">
+    <div class="sec-header">
+      <p class="sec-eyebrow">Ejercicios prácticos</p>
+      <h2 class="sec-titulo">Desarrollar influencia:<br>seis prácticas concretas</h2>
+      <p class="sec-desc">Cada ejercicio está inspirado en cómo un científico histórico específico construyó su capacidad de influir fuera de la academia.</p>
+    </div>
+
+    <div class="ejercicios-grid">
+      <div class="ejercicio-card">
+        <div class="ejercicio-ico ic-t">🔭</div>
+        <h3>El ejercicio del tren</h3>
+        <p>Toma tu investigación actual y explícala con una analogía cotidiana. Sin ecuaciones ni jerga. Si un taxista no entiende la idea central, reformula. La analogía es el puente, no el destino.</p>
+        <span class="ejercicio-quien">Inspirado en Einstein</span>
+      </div>
+
+      <div class="ejercicio-card">
+        <div class="ejercicio-ico ic-b">✍️</div>
+        <h3>Carta al tomador de decisiones</h3>
+        <p>Escribe una página dirigida a un ministro o director explicando por qué tu investigación debe informar una política pública. Sin abstract, sin citas bibliográficas. Solo argumentos de impacto.</p>
+        <span class="ejercicio-quien">Inspirado en Claude Bernard</span>
+      </div>
+
+      <div class="ejercicio-card">
+        <div class="ejercicio-ico ic-a">🤝</div>
+        <h3>Mapa de aliados estratégicos</h3>
+        <p>Dibuja tu red actual. ¿Quién está fuera del mundo académico? Identifica 3 personas en gobierno, empresa o medios con quienes construir relación real este año. Planck no pedía fondos: construía alianzas.</p>
+        <span class="ejercicio-quien">Inspirado en Max Planck</span>
+      </div>
+
+      <div class="ejercicio-card">
+        <div class="ejercicio-ico ic-c">📢</div>
+        <h3>El artículo de opinión</h3>
+        <p>Esboza los tres primeros párrafos de un artículo para un diario nacional sobre un problema urgente en tu campo. Sin modestia académica. Con voz propia, sin condicionales, con una tesis clara.</p>
+        <span class="ejercicio-quien">Inspirado en Alexis Carrel</span>
+      </div>
+
+      <div class="ejercicio-card">
+        <div class="ejercicio-ico ic-t">🎯</div>
+        <h3>La postura ética pública</h3>
+        <p>Identifica una decisión política actual donde tu conocimiento científico es directamente relevante. ¿Cuál es tu posición? Practica argumentarla en 90 segundos frente a una cámara o a un colega no experto.</p>
+        <span class="ejercicio-quien">Inspirado en Einstein y Planck</span>
+      </div>
+
+      <div class="ejercicio-card">
+        <div class="ejercicio-ico ic-b">🌐</div>
+        <h3>La conferencia no académica</h3>
+        <p>Prepara una presentación de 15 minutos sobre tu investigación para empresarios, legisladores o periodistas. Sin slides con resultados estadísticos. Solo narrativa, problema, conclusión y llamada a la acción.</p>
+        <span class="ejercicio-quien">Aplicación integrada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     SECCIÓN 4 — PROPUESTA
+     ═══════════════════════════ -->
+<section class="seccion" id="sec-propuesta">
+  <div class="contenedor">
+    <div class="sec-header">
+      <p class="sec-eyebrow">Propuesta para Invesciencias</p>
+      <h2 class="sec-titulo">Programa de desarrollo<br>de capacidades de influencia</h2>
+      <p class="sec-desc">Marco para formar investigadores colombianos que traduzcan su conocimiento en impacto político, social y cultural real.</p>
+    </div>
+
+    <div class="propuesta-bloque">
+      <h3><span>✦</span>Diagnóstico — El problema del aislamiento científico</h3>
+      <p>Los investigadores colombianos generan conocimiento de alta calidad que raramente llega a quienes toman decisiones. No por falta de mérito, sino por ausencia de habilidades de traducción, comunicación y construcción de redes fuera del mundo académico. Einstein, Bernard y Planck no fueron solo brillantes: fueron estratégicamente influyentes. Esa capacidad puede enseñarse.</p>
+    </div>
+
+    <div class="propuesta-bloque">
+      <h3><span>✦</span>Objetivos del programa</h3>
+      <div class="badges-wrap">
+        <span class="badge badge-teal">Comunicación pública</span>
+        <span class="badge badge-blue">Incidencia en política</span>
+        <span class="badge badge-amber">Red interdisciplinar</span>
+        <span class="badge badge-teal">Narrativa personal</span>
+        <span class="badge badge-blue">Presencia en medios</span>
+      </div>
+      <p>Formar investigadores en las 5 competencias que históricamente han convertido a científicos en agentes de cambio social, político y cultural — adaptadas al contexto latinoamericano.</p>
+    </div>
+
+    <div class="propuesta-bloque">
+      <h3><span>✦</span>Estructura — 3 módulos (16 semanas)</h3>
+      <div class="modulo">
+        <h4>Módulo 1 · Traducción del conocimiento (6 semanas)</h4>
+        <ul class="paso-lista">
+          <li>Analogías y lenguaje accesible — modelo Einstein</li>
+          <li>Escritura para no especialistas — modelo Bernard</li>
+          <li>Comunicación en medios: radio, prensa, redes sociales</li>
+        </ul>
+      </div>
+      <div class="modulo">
+        <h4>Módulo 2 · Incidencia institucional (6 semanas)</h4>
+        <ul class="paso-lista">
+          <li>Cómo funciona la toma de decisiones en el sector público</li>
+          <li>Construcción de red con actores no académicos — modelo Planck</li>
+          <li>Elaboración de policy briefs y presentaciones ejecutivas</li>
+        </ul>
+      </div>
+      <div class="modulo">
+        <h4>Módulo 3 · Autoridad y postura pública (4 semanas)</h4>
+        <ul class="paso-lista">
+          <li>Construcción de narrativa personal y marca científica</li>
+          <li>Postura ética y declaraciones públicas — modelo Einstein y Planck</li>
+          <li>Participación en espacios de deliberación política</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="propuesta-bloque">
+      <h3><span>✦</span>Métricas de éxito sugeridas</h3>
+      <p>Investigadores que publican en medios no académicos · Participaciones en consejos asesores gubernamentales · Políticas públicas que citan directamente investigaciones del programa · Red de aliados fuera de la academia construida por cada participante · Apariciones en medios de comunicación como expertos en debates de actualidad.</p>
+    </div>
+
+    <div class="cta-grande">
+      <p>¿Quieres desarrollar esta propuesta en detalle — con presupuesto estimado, aliados estratégicos y métricas de seguimiento para el contexto colombiano?</p>
+      <a class="btn-cta" href="mailto:?subject=Propuesta%20Invesciencias%20-%20Liderazgo%20Científico">Contactar al equipo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>Científicos Influyentes</strong> — Plataforma de liderazgo científico<br>
+    Desarrollada para <strong>Invesciencias</strong> · Basada en modelos históricos de influencia científica<br>
+    Einstein · Claude Bernard · Max Planck · Alexis Carrel
+  </p>
+</footer>
+
+<script>
+// ── Datos científicos ──
+const datos = {
+  einstein: {
+    titulo: 'Albert Einstein — Estrategias de influencia',
+    cita: '"Si no puedes explicarlo de forma sencilla, no lo entiendes suficientemente bien."',
+    habilidades: [
+      { t: 'Analogía como puente', d: 'Einstein explicaba la relatividad con trenes, relojes y personas en elevadores. Nunca exigía que el público aprendiera física antes de entender la idea central. La imagen venía primero, la teoría después.' },
+      { t: 'Escritura para el ciudadano', d: 'Publicó artículos en el New York Times, respondía cartas de niños y escribió libros de divulgación. Creía que la ciencia era patrimonio de todos, no privilegio de los laboratorios.' },
+      { t: 'Postura política pública', d: 'Firmó la carta a Roosevelt sobre la bomba atómica, apoyó el sionismo, se opuso al macartismo. Usó su autoridad científica para tomar posiciones en los debates más urgentes de su tiempo.' },
+      { t: 'Humanización de la figura científica', d: 'Cultivó una imagen accesible: el pelo despeinado, el violín, los chistes. Eso le permitió llegar a audiencias que nunca habrían leído un paper científico.' }
+    ]
+  },
+  bernard: {
+    titulo: 'Claude Bernard — Estrategias de influencia',
+    cita: '"El arte es yo; la ciencia es nosotros."',
+    habilidades: [
+      { t: 'Método como narrativa', d: 'Su Introducción a la medicina experimental (1865) no era un manual técnico sino un argumento filosófico accesible. Se convirtió en lectura obligatoria en escuelas de toda Europa porque explicaba cómo piensa un científico.' },
+      { t: 'Legitimación del laboratorio ante la sociedad', d: 'En una época en que la experimentación era controversial, Bernard defendió públicamente el método experimental con argumentos éticos y sociales, no solo científicos.' },
+      { t: 'Formación de discípulos influyentes', d: 'Entendió que multiplicar científicos bien formados era más poderoso que actuar solo. Sus estudiantes ocuparon posiciones clave en universidades, hospitales y ministerios.' },
+      { t: 'Escritura clara sobre ideas complejas', d: 'Usaba frases cortas, ejemplos clínicos concretos y evitaba el lenguaje oscuro. Su prosa es citada hasta hoy en cursos de epistemología y filosofía de la ciencia.' }
+    ]
+  },
+  planck: {
+    titulo: 'Max Planck — Estrategias de influencia',
+    cita: '"Una nueva verdad científica no triunfa convenciendo a sus oponentes, sino porque estos mueren y crece una generación familiarizada con ella."',
+    habilidades: [
+      { t: 'Liderazgo institucional estratégico', d: 'Como presidente de la Sociedad Kaiser Wilhelm (hoy Max Planck), negoció fondos del gobierno y la industria para la ciencia. Entendió que la financiación es política y la política necesita interlocutores científicos confiables.' },
+      { t: 'Red con el poder económico e industrial', d: 'Construyó alianzas con grandes empresas alemanas que veían en la física básica una inversión estratégica. Tradujo el valor de la ciencia en términos comprensibles para el mundo empresarial.' },
+      { t: 'Resistencia ética con costo personal', d: 'Se negó a expulsar a científicos judíos bajo el régimen nazi, a pesar de las presiones. Esa postura con costo real amplificó su autoridad moral ante la comunidad científica internacional.' },
+      { t: 'Oratoria académica de alto impacto', d: 'Sus conferencias en Berlín convocaban a filósofos, ingenieros y políticos. Sabía que hablar bien en público era una responsabilidad científica, no una vanidad personal.' }
+    ]
+  },
+  carrel: {
+    titulo: 'Alexis Carrel — Estrategias de influencia',
+    cita: '"El hombre no puede conocerse a sí mismo sin el auxilio de la ciencia."',
+    habilidades: [
+      { t: 'Divulgación masiva con impacto cultural', d: 'Su libro La incógnita del hombre (1935) fue un best-seller mundial leído en decenas de idiomas. Demostró que un científico puede escribir para millones sin sacrificar rigor si elige bien el tema y el tono.' },
+      { t: 'Conexión ciencia–grandes preguntas humanas', d: 'Carrel abordaba temas que todo ser humano se pregunta: el envejecimiento, la mente, la sociedad ideal. Eso le garantizaba audiencia masiva más allá de cualquier comunidad científica.' },
+      { t: 'Presencia en debates de política social', d: 'Participó activamente en discusiones sobre salud pública, educación y organización social. Su Nobel en medicina le dio una plataforma que usó para influir en debates nacionales e internacionales.' },
+      { t: 'Premio Nobel como palanca de influencia', d: 'Entendió que el reconocimiento científico es capital simbólico que debe ejercerse. No se encerró en el laboratorio tras el Nobel: lo convirtió en pasaporte para entrar a espacios de poder.' }
+    ]
+  }
+};
+
+// ── Seleccionar científico ──
+function selSci(id) {
+  document.querySelectorAll('.sci-card').forEach(c => c.classList.remove('sel'));
+  document.getElementById('card-' + id).classList.add('sel');
+  const d = datos[id];
+  document.getElementById('d-titulo').textContent = d.titulo;
+  document.getElementById('d-cita').textContent = d.cita;
+  document.getElementById('d-habilidades').innerHTML = d.habilidades.map(h =>
+    `<div class="habilidad"><div class="habilidad-titulo">${h.t}</div><p>${h.d}</p></div>`
+  ).join('');
+}
+
+// ── Cambiar tab ──
+function cambiarTab(id) {
+  document.querySelectorAll('.seccion').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  const btns = document.querySelectorAll('.tab-btn');
+  const map = { modelos: 0, habilidades: 1, ejercicios: 2, propuesta: 3 };
+  btns[map[id]].classList.add('active');
+  document.getElementById('nav-principal').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function irA(id) {
+  cambiarTab(id);
+}
+
+// ── Init ──
+selSci('einstein');
+cambiarTab('modelos');
+</script>
+</body>
+</html>
