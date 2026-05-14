@@ -166,11 +166,11 @@ body {
 }
 .btn-secundario:hover { background: rgba(255,255,255,0.2); }
 
-/* Chips científicos */
-.sci-chips {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
+/* Bloque descriptivo de habilidades */
+.hero-skills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -178,25 +178,34 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.sci-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 100px;
-  padding: 0.35rem 0.9rem 0.35rem 0.35rem;
+.hero-skill-item {
+  padding: 1rem 1.25rem;
+  border-left: 1px solid rgba(255,255,255,0.1);
 }
-.sci-av {
-  width: 28px; height: 28px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.68rem; font-weight: 600;
+.hero-skill-item:first-child { border-left: none; }
+.hero-skill-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--inv-verde-claro);
+  margin-bottom: 0.25rem;
 }
-.av-e { background: rgba(91,175,143,0.4); color: #A8E0CC; }
-.av-b { background: rgba(200,168,75,0.3); color: #E2C97E; }
-.av-p { background: rgba(255,255,255,0.2); color: #fff; }
-.av-c { background: rgba(184,115,51,0.3); color: #D4A870; }
-.sci-chip span { font-size: 0.73rem; color: rgba(255,255,255,0.7); }
+.hero-skill-modelo {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.35rem;
+}
+.hero-skill-desc {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+
+/* Chips científicos — RETIRADO (conservado por compatibilidad) */
+.sci-chips-legacy { display: none; }
 
 /* ══ NAV ══ */
 .main-nav {
@@ -940,6 +949,9 @@ footer strong { color: rgba(255,255,255,0.7); }
   .form-row { grid-template-columns: 1fr; }
   .contenedor { padding: 2rem 1.25rem 4rem; }
   .sci-grid { grid-template-columns: 1fr 1fr; }
+  .hero-skills { grid-template-columns: 1fr 1fr; }
+  .hero-skill-item:nth-child(odd) { border-left: none; }
+  .hero-skill-item:nth-child(3), .hero-skill-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.1); }
 }
 </style>
 </head>
@@ -967,11 +979,27 @@ footer strong { color: rgba(255,255,255,0.7); }
       </div>
     </div>
   </div>
-  <div class="sci-chips">
-    <div class="sci-chip"><div class="sci-av av-e">AE</div><span>Einstein · Analogía accesible</span></div>
-    <div class="sci-chip"><div class="sci-av av-b">CB</div><span>C. Bernard · Escritura pública</span></div>
-    <div class="sci-chip"><div class="sci-av av-p">MP</div><span>Planck · Red institucional</span></div>
-    <div class="sci-chip"><div class="sci-av av-c">AC</div><span>Carrel · Divulgación masiva</span></div>
+  <div class="hero-skills">
+    <div class="hero-skill-item">
+      <div class="hero-skill-label">Habilidad 1</div>
+      <div class="hero-skill-modelo">Analogía accesible</div>
+      <div class="hero-skill-desc">Traducir conceptos complejos a imágenes cotidianas que cualquier oyente puede retener y repetir.</div>
+    </div>
+    <div class="hero-skill-item">
+      <div class="hero-skill-label">Habilidad 2</div>
+      <div class="hero-skill-modelo">Escritura pública</div>
+      <div class="hero-skill-desc">Publicar en medios no académicos con claridad y rigor para llegar a quienes toman decisiones.</div>
+    </div>
+    <div class="hero-skill-item">
+      <div class="hero-skill-label">Habilidad 3</div>
+      <div class="hero-skill-modelo">Red institucional</div>
+      <div class="hero-skill-desc">Construir alianzas con gobierno, industria y medios antes de necesitarlas para financiar e implementar la ciencia.</div>
+    </div>
+    <div class="hero-skill-item">
+      <div class="hero-skill-label">Habilidad 4</div>
+      <div class="hero-skill-modelo">Divulgación masiva</div>
+      <div class="hero-skill-desc">Usar la televisión, el podcast y los grandes formatos para que la ciencia forme parte de la cultura popular.</div>
+    </div>
   </div>
 </header>
 
@@ -1363,13 +1391,13 @@ footer strong { color: rgba(255,255,255,0.7); }
 <div class="contenedor">
   <div class="sec-head">
     <p class="sec-eyebrow">Aportes de la comunidad</p>
-    <h2 class="sec-titulo">Lo que están haciendo los investigadores de Invesciencias</h2>
-    <p class="sec-desc">Experiencias verificadas y compartidas por miembros de la comunidad. Aprende de colegas que ya están aplicando estas habilidades.</p>
+    <h2 class="sec-titulo">Casos de referencia + experiencias de la comunidad</h2>
+    <p class="sec-desc">Para abrir la conversación incluimos cuatro casos de referencia — científicos contemporáneos vivos o activos después de 2010 cuyo impacto está documentado — que muestran que cada una de las habilidades de los modelos históricos (Einstein, Bernard, Planck, Carrel) sigue siendo viable hoy. A medida que los miembros de Invesciencias compartan sus propias experiencias, este repositorio crecerá con casos locales.</p>
   </div>
 
   <div class="pendiente-banner">
     <span style="font-size:1.4rem">🔎</span>
-    <p><strong>Los aportes pendientes de revisión no aparecen aquí.</strong> Una vez que el equipo editorial de Invesciencias verifica que el contenido es pertinente, el aporte queda visible para toda la comunidad. Este proceso garantiza la calidad y utilidad del conocimiento compartido.</p>
+    <p><strong>Los aportes pendientes de revisión no aparecen aquí.</strong> Una vez que el equipo editorial de Invesciencias verifica que el contenido es pertinente, el aporte queda visible para toda la comunidad. Los casos de referencia internacionales sirven como punto de partida y estándar de rigor: cada uno es verificable en fuentes públicas (Nobel, NEJM, Royal Society, NASA).</p>
   </div>
 
   <div class="repo-filtros">
@@ -1500,57 +1528,76 @@ const DATOS = {
   }
 };
 
-// ════ APORTES DE EJEMPLO ════
+// ════ APORTES DE REFERENCIA — CIENTÍFICOS CONTEMPORÁNEOS VERIFICABLES ════
+// Cada caso ilustra una de las 4 habilidades de los modelos históricos
+// aplicada por un científico vivo (o activo después de 2010) con impacto documentado.
 let aportes = [
   {
-    nombre: "Dra. Marcela Ríos",
-    iniciales: "MR",
-    institucion: "Universidad Nacional de Colombia",
-    campo: "Ciencias Ambientales",
-    tema: "Biodiversidad de macroinvertebrados en ríos de montaña",
+    nombre: "Dr. Neil deGrasse Tyson",
+    iniciales: "NT",
+    institucion: "Hayden Planetarium · American Museum of Natural History (NY)",
+    campo: "Astrofísica / Divulgación",
+    tema: "Comunicación pública de astrofísica y cosmología a audiencias no especializadas",
     habilidad: "Analogía accesible",
-    experiencia: "Siempre me preguntaban por qué importaba estudiar insectos acuáticos microscópicos. Comencé a explicarlo como un sistema de alarma: si los bomberos de tu ciudad desaparecen, algo grave está pasando. Los macroinvertebrados son los bomberos del río. Esta analogía me abrió una entrevista en radio nacional y dos reuniones con la Gobernación.",
-    ejemplo: "Analogía desarrollada: «Un río sin macroinvertebrados es como un hospital sin médicos — funciona en apariencia, pero cuando algo sale mal, no hay quien responda. Estos organismos limpian el agua, descomponen materia orgánica y son el primer indicador de contaminación, mucho antes de que nosotros lo notemos.»",
+    experiencia: "Tyson (n. 1958) es el ejemplo contemporáneo más claro del modelo Einstein aplicado a la astrofísica: construye analogías que un lector sin formación científica puede repetir. Como director del Hayden Planetarium desde 1996, autor de bestsellers como «Astrophysics for People in a Hurry» (2017) y conductor de «Cosmos: A Spacetime Odyssey» (2014, sucesor de la serie de Sagan), ha llevado conceptos como agujeros negros, materia oscura y relatividad a millones de personas usando analogías cotidianas. Recibió la NASA Distinguished Public Service Medal — el mayor reconocimiento que NASA otorga a un civil — por su impacto en la comprensión pública de la ciencia.",
+    ejemplo: "Analogía documentada — la «spaghettification» en agujeros negros: en su libro «Death by Black Hole» (2007), explica que al caer en un agujero negro las fuerzas de marea estiran el cuerpo «como pasta de dientes exprimida por un tubo», acuñando el término spaghettification. La analogía funcionó tan bien que hoy se usa en textos académicos. Para materia oscura, en «Astrophysics for People in a Hurry» compara el universo con una galleta con chispas de chocolate: lo que vemos (las chispas) es sólo el 5% — el resto es masa que sabemos que está pero no podemos detectar directamente.",
     etapa: "senior",
     contacto: "frecuente",
     obstaculo: "lenguaje",
     modelo: "einstein",
-    nivel: 4,
-    fecha: "Marzo 2025",
+    nivel: 5,
+    fecha: "Caso de referencia",
     verificado: true
   },
   {
-    nombre: "Dr. Camilo Herrera",
-    iniciales: "CH",
-    institucion: "Universidad de Antioquia",
-    campo: "Medicina y Salud Pública",
-    tema: "Resistencia antimicrobiana en entornos hospitalarios rurales",
+    nombre: "Dr. Atul Gawande",
+    iniciales: "AG",
+    institucion: "Harvard Medical School · Brigham and Women's Hospital",
+    campo: "Cirugía y Salud Pública",
+    tema: "Seguridad quirúrgica, errores sistémicos en medicina y políticas de salud global",
     habilidad: "Escritura pública",
-    experiencia: "Escribí una columna de opinión para El Colombiano sobre el uso indiscriminado de antibióticos. La columna fue citada en una sesión del Congreso tres semanas después. Fue la primera vez que sentí que mi investigación llegaba a donde se toman las decisiones. El truco fue no hablar de bacterias sino de lo que le pasa a una familia cuando un antibiótico ya no funciona.",
-    ejemplo: "Primer párrafo de la columna: «En Colombia, cada año mueren más de 10.000 personas por infecciones que hace diez años eran tratables. No es un fracaso de la medicina: es el resultado de años de decisiones equivocadas sobre cómo usamos los antibióticos. Y esas decisiones se toman en farmacias, en cocinas y en consultorios — no en laboratorios.»",
-    etapa: "junior",
-    contacto: "ocasional",
+    experiencia: "Gawande (n. 1965) es cirujano endocrino en Harvard y escritor habitual de The New Yorker desde finales de los 90 — su última columna en la revista es de noviembre 2025. Su modelo replica al de Claude Bernard: prosa clara sobre problemas médicos complejos que llega a tomadores de decisiones. Sus columnas han influido directamente en política pública: tras leer un artículo suyo, Charlie Munger (socio de Warren Buffett) donó USD 20.000 al hospital donde trabajó, y la OMS lo invitó en 2007 a liderar la lista de chequeo quirúrgico que hoy se usa globalmente. Fue Asistente del Administrador de USAID para Salud Global (2022–2025) bajo la administración Biden — un caso textual de cómo la escritura pública abre puertas a la formulación de políticas.",
+    ejemplo: "Caso concreto — el Checklist quirúrgico: su artículo «The Checklist» (The New Yorker, 2007) sobre errores prevenibles en cirugía se convirtió en el libro «The Checklist Manifesto» (2009), bestseller del NYT traducido a más de 25 idiomas. El estudio de la OMS publicado en el New England Journal of Medicine (2009) demostró que su lista redujo la mortalidad quirúrgica en más del 30% en hospitales piloto en 8 países. Una columna periodística terminó siendo política global de salud — el mismo arco que Bernard recorría en el siglo XIX, ahora con audiencia de millones.",
+    etapa: "senior",
+    contacto: "frecuente",
     obstaculo: "reconocimiento",
     modelo: "bernard",
-    nivel: 3,
-    fecha: "Enero 2025",
+    nivel: 5,
+    fecha: "Caso de referencia",
     verificado: true
   },
   {
-    nombre: "Ing. Valentina Ospina",
-    iniciales: "VO",
-    institucion: "Pontificia Universidad Javeriana",
-    campo: "Tecnología e Informática",
-    tema: "Algoritmos de detección temprana de enfermedades en cultivos mediante visión computacional",
+    nombre: "Dra. Jennifer Doudna",
+    iniciales: "JD",
+    institucion: "UC Berkeley · Innovative Genomics Institute (IGI)",
+    campo: "Bioquímica / Edición genómica",
+    tema: "CRISPR-Cas9: del descubrimiento de laboratorio a la terapia clínica",
     habilidad: "Red institucional",
-    experiencia: "Llevaba 3 años sin salir de la academia con mi investigación. Empecé a asistir a ferias agrícolas — no a presentar mis papers, sino a escuchar a los cultivadores. En seis meses construí relaciones con dos cooperativas y una empresa de insumos agrícolas que financiaron una prueba piloto. La clave fue ir sin propuesta: ir a aprender.",
-    ejemplo: "Estrategia concreta: mapeé todos los eventos del sector agro en mi región durante un año. Asistí a 8 eventos como oyente antes de hablar de mi investigación. En el noveno, ya tenía 3 contactos que me invitaron a presentar. La red se construye antes de necesitarla.",
-    etapa: "postdoc",
+    experiencia: "Doudna (n. 1964), Premio Nobel de Química 2020 junto a Emmanuelle Charpentier, es el ejemplo más claro del modelo Planck en la ciencia del siglo XXI: no se quedó con el descubrimiento, construyó la infraestructura institucional para que su tecnología llegara a pacientes. Cofundó el Innovative Genomics Institute (IGI) en 2014 — una alianza entre UC Berkeley, UCSF, UC Davis, Lawrence Berkeley National Lab, Lawrence Livermore y Gladstone Institutes. Además cofundó múltiples empresas (Caribou Biosciences, Intellia Therapeutics, Mammoth Biosciences, Scribe Therapeutics) para traducir investigación en productos clínicos. Es Howard Hughes Medical Institute Investigator desde 1997.",
+    ejemplo: "Caso concreto — el bebé KJ (mayo 2025): el IGI bajo liderazgo de Doudna colaboró con el Children's Hospital of Philadelphia y Danaher Corporation para diseñar, manufacturar, aprobar por FDA y administrar la primera terapia CRISPR personalizada de la historia a un recién nacido — todo en 6 meses. Esto no fue posible por un descubrimiento aislado, sino por la red de instituciones (academia + industria + hospital + regulador) que ella tejió durante una década. El Danaher-IGI Beacon for CRISPR Cures (2024) es la mayor colaboración filantrópico-industrial de su tipo. Construir red antes de necesitarla — la misma estrategia de Planck en Berlín.",
+    etapa: "senior",
     contacto: "frecuente",
     obstaculo: "red",
     modelo: "planck",
-    nivel: 4,
-    fecha: "Febrero 2025",
+    nivel: 5,
+    fecha: "Caso de referencia",
+    verificado: true
+  },
+  {
+    nombre: "Prof. Brian Cox",
+    iniciales: "BC",
+    institucion: "University of Manchester · Royal Society · CERN (ATLAS)",
+    campo: "Física de partículas / Comunicación científica",
+    tema: "Cosmología y física fundamental para audiencias masivas",
+    habilidad: "Divulgación masiva",
+    experiencia: "Cox (n. 1968) es físico de partículas activo en el experimento ATLAS del LHC (CERN) y Royal Society Professor for Public Engagement in Science. Su modelo replica a Carrel sin el lastre ideológico: usar la audiencia masiva para volver la ciencia parte de la cultura popular. Sus series de la BBC «Wonders of the Solar System» (2010), «Wonders of the Universe» (2011) y «Wonders of Life» (2013) llevaron física teórica a prime-time mundial. La Royal Society le otorgó el Michael Faraday Prize (2012) precisamente por su contribución a la comprensión pública de la ciencia.",
+    ejemplo: "Impacto medible — el «Brian Cox Effect»: las solicitudes universitarias para estudiar física en el Reino Unido aumentaron 52% entre 2008 y 2012, atribuido por las propias universidades británicas a sus programas de televisión. «Wonders of the Solar System» ganó un Peabody Award (2011); «Wonders of the Universe» ganó dos Royal Television Society Awards. Su libro «The Quantum Universe» se mantuvo en listas de bestsellers internacionales. Cox demuestra que un científico activo en investigación de frontera puede simultáneamente sostener una carrera mediática que cambia las cifras de matrícula universitaria — el sueño que Carrel persiguió en los 30, ejecutado con rigor metodológico actual.",
+    etapa: "senior",
+    contacto: "frecuente",
+    obstaculo: "lenguaje",
+    modelo: "carrel",
+    nivel: 5,
+    fecha: "Caso de referencia",
     verificado: true
   }
 ];
@@ -1566,7 +1613,7 @@ function cambiarTab(id) {
   const tabs = document.querySelectorAll(".nav-tab");
   if (mapa[id] !== undefined) tabs[mapa[id]].classList.add("active");
   window.scrollTo({ top: document.querySelector(".main-nav").offsetTop, behavior: "smooth" });
-  if (id === "repositorio") renderRepositorio();
+  if (id === "repositorio") { cargarAportesAprobados(); renderRepositorio(); }
 }
 
 function selSci(id) {
@@ -1602,6 +1649,10 @@ document.querySelectorAll(".radio-opt").forEach(label => {
   });
 });
 
+// ════ CONFIGURACIÓN GOOGLE SHEETS ════
+// PASO 1: Pega aquí la URL de tu Apps Script desplegado
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5lbUxrqZTLFzPvOdDx_WAcajgy5h8FT08lXKhItLrhPNiI7d9zXBOyWULd5pheIbsLQ/exec";
+
 // ════ ENVIAR REGISTRO ════
 function enviarRegistro() {
   const nombre = document.getElementById("f-nombre").value.trim();
@@ -1622,19 +1673,67 @@ function enviarRegistro() {
   const contacto = document.querySelector("[name=contacto]:checked")?.value || "";
   const obstaculo = document.querySelector("[name=obstaculo]:checked")?.value || "";
   const modelo = document.querySelector("[name=modelo]:checked")?.value || "";
-
   const iniciales = nombre.split(" ").filter(p => /^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/.test(p)).slice(-2).map(p => p[0].toUpperCase()).join("") || nombre.slice(0,2).toUpperCase();
 
-  const nuevo = { nombre, iniciales, institucion: inst, campo, tema, habilidad, experiencia, ejemplo, etapa, contacto, obstaculo, modelo, nivel: nivelActual, fecha: new Date().toLocaleDateString("es-CO", { month: "long", year: "numeric" }), verificado: false, pendiente: true };
+  const datos = { nombre, iniciales, email, institucion: inst, campo, tema, habilidad, experiencia, ejemplo, etapa, contacto, obstaculo, modelo, nivel: nivelActual };
 
-  aportes.unshift(nuevo);
-  mostrarToast("✦ Aporte enviado — revisión en 3-5 días hábiles");
-  document.getElementById("form-registro").reset();
-  document.querySelectorAll(".star").forEach(s => s.classList.remove("on"));
-  document.querySelectorAll(".radio-opt").forEach(o => o.classList.remove("checked"));
-  nivelActual = 0;
+  // Deshabilitar botón mientras envía
+  const btn = document.querySelector(".btn-submit");
+  btn.disabled = true;
+  btn.textContent = "Enviando…";
 
-  setTimeout(() => cambiarTab("repositorio"), 2200);
+  if (APPS_SCRIPT_URL === "PEGA_AQUI_LA_URL_DE_TU_APPS_SCRIPT") {
+    // Modo local: funciona sin conectar a Sheets (para pruebas)
+    mostrarToast("✦ [Modo local] Aporte registrado — configura Apps Script para guardar en Sheets");
+    btn.disabled = false;
+    btn.textContent = "✦ Enviar mi aporte al Laboratorio";
+    document.getElementById("form-registro").reset();
+    document.querySelectorAll(".star").forEach(s => s.classList.remove("on"));
+    document.querySelectorAll(".radio-opt").forEach(o => o.classList.remove("checked"));
+    nivelActual = 0;
+    setTimeout(() => cambiarTab("repositorio"), 2200);
+    return;
+  }
+
+  fetch(APPS_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(datos)
+  })
+  .then(() => {
+    mostrarToast("✦ Aporte enviado — recibirás confirmación por correo en 3-5 días hábiles");
+    document.getElementById("form-registro").reset();
+    document.querySelectorAll(".star").forEach(s => s.classList.remove("on"));
+    document.querySelectorAll(".radio-opt").forEach(o => o.classList.remove("checked"));
+    nivelActual = 0;
+    btn.disabled = false;
+    btn.textContent = "✦ Enviar mi aporte al Laboratorio";
+    setTimeout(() => cambiarTab("repositorio"), 2200);
+  })
+  .catch(() => {
+    mostrarToast("⚠ Error de conexión — intenta de nuevo");
+    btn.disabled = false;
+    btn.textContent = "✦ Enviar mi aporte al Laboratorio";
+  });
+}
+
+// ════ CARGAR APORTES APROBADOS DESDE GOOGLE SHEETS ════
+function cargarAportesAprobados() {
+  if (APPS_SCRIPT_URL === "PEGA_AQUI_LA_URL_DE_TU_APPS_SCRIPT") return; // modo local
+
+  fetch(APPS_SCRIPT_URL + "?action=getAprobados")
+    .then(r => r.json())
+    .then(data => {
+      if (data && data.aportes) {
+        // Preservar los casos de referencia (los 4 primeros con verificado:true)
+        const referencia = aportes.filter(a => a.verificado && !a.pendiente);
+        const nuevos = data.aportes.map(a => ({ ...a, verificado: true, pendiente: false }));
+        aportes = [...referencia, ...nuevos];
+        renderRepositorio();
+      }
+    })
+    .catch(() => {}); // si falla, muestra los casos de referencia igual
 }
 
 // ════ REPOSITORIO ════
