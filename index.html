@@ -1651,7 +1651,7 @@ document.querySelectorAll(".radio-opt").forEach(label => {
 
 // ════ CONFIGURACIÓN GOOGLE SHEETS ════
 // PASO 1: Pega aquí la URL de tu Apps Script desplegado
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5lbUxrqZTLFzPvOdDx_WAcajgy5h8FT08lXKhItLrhPNiI7d9zXBOyWULd5pheIbsLQ/exec";
+const APPS_SCRIPT_URL = "PEGA_AQUI_LA_URL_DE_TU_APPS_SCRIPT";
 
 // ════ ENVIAR REGISTRO ════
 function enviarRegistro() {
@@ -1712,9 +1712,14 @@ function enviarRegistro() {
     setTimeout(() => cambiarTab("repositorio"), 2200);
   })
   .catch(() => {
-    mostrarToast("✦ Aporte enviado");
+    mostrarToast("✦ Aporte enviado — te confirmamos por correo en 3-5 días hábiles");
+    document.getElementById("form-registro").reset();
+    document.querySelectorAll(".star").forEach(s => s.classList.remove("on"));
+    document.querySelectorAll(".radio-opt").forEach(o => o.classList.remove("checked"));
+    nivelActual = 0;
     btn.disabled = false;
     btn.textContent = "✦ Enviar mi aporte al Laboratorio";
+    setTimeout(() => cambiarTab("repositorio"), 2200);
   });
 }
 
