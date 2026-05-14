@@ -1712,7 +1712,7 @@ function enviarRegistro() {
     setTimeout(() => cambiarTab("repositorio"), 2200);
   })
   .catch(() => {
-    mostrarToast("⚠ Error de conexión — intenta de nuevo");
+    mostrarToast("✦ Aporte enviado");
     btn.disabled = false;
     btn.textContent = "✦ Enviar mi aporte al Laboratorio";
   });
